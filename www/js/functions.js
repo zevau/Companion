@@ -1,6 +1,5 @@
-$("document").ready(function () {
+﻿$("document").ready(function () {
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
-    alert("script loaded");//debug
 
 
     $(".log-bwn").on("click", function () {
