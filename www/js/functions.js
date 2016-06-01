@@ -110,7 +110,7 @@ $("document").ready(function () {
           alert("Connection failed");
         }
       })
-    })*/
+    });*/
     $(".confirm").click(function(){
       var class_str = $(this).attr('id');
       var class_id;
@@ -146,11 +146,40 @@ $("document").ready(function () {
           data: sendData,
           success: function (data, textStatus, jqXHR)
           {
-            //Query
             var returnData = JSON.parse(data);
             localStorage.setItem("CLASSID", returnData.userInfo.class);
             alert("Klasse ausgewählt!");
             window.location = "inventoryscreen.html";
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert("Connection failed");
+          }
+        });
+    });
+    $(".confirm_faction").click(function(){
+      var faction_str = $(this).attr('id');
+      var faction_id;
+      if(faction_str === "tec"){//technokraten
+        faction_id = 1;
+      } else if(faction_str === "ava"){ //avangardisten
+        faction_id = 2;
+      }
+      var sendData = {action: "selectteam", teamid: faction_id, userid: localStorage.getItem("USERID")}
+      $.ajax({
+          url: postUrl,
+          type: "POST",
+          data: sendData,
+          success: function (data, textStatus, jqXHR)
+          {
+            var returnData = JSON.parse(data);
+            localStorage.setItem("TEAMID", returnData.userInfo.team);
+            alert("Fraktion ausgewählt!");
+            if (faction_id = 1){
+              window.location = "classest.html";
+            } else if (faction_id = 2){
+              window.location = "classesa.html";
+            }
           },
           error: function (jqXHR, textStatus, errorThrown)
           {
