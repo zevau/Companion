@@ -1,8 +1,6 @@
-﻿$("document").ready(function () {
+$("document").ready(function () {
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
-
-
-    $(".log-bwn").on("click", function () {
+  $(".log-bwn").on("click", function () {
 
         var loginStr = $("#username").val();
         var passwordStr = $("#password").val();
@@ -113,4 +111,51 @@
         }
       })
     })*/
+    $(".confirm").click(function(){
+      var class_str = $(this).attr('id');
+      var class_id;
+      if(class_str === "inf"){//infanterist
+        class_id = 1;
+      } else if(class_str === "amb"){ //ambidexter
+        class_id = 2;
+      } else if(class_str === "enf"){//enforcer
+        class_id = 3;
+      } else if(class_str === "dis"){//disassembler
+        class_id = 4;
+      } else if(class_str === "min"){//mindscaper
+        class_id = 5;
+      } else if(class_str === "hkt"){//hacker(tech)
+        class_id = 6;
+      } else if(class_str === "avj"){//average joe
+        class_id = 7;
+      } else if(class_str === "pst"){//pistolero
+        class_id = 8;
+      } else if(class_str === "spc"){//specialist
+        class_id = 9;
+      } else if(class_str === "brw"){//brawler
+        class_id = 10;
+      } else if(class_str === "lib"){//limit breaker
+        class_id = 11;
+      } else if(class_str === "hka"){//hacker(avan)
+        class_id = 12;
+      }
+      var sendData = {action: "selectclass", classid: class_id, userid: localStorage.getItem("USERID")}
+      $.ajax({
+          url: postUrl,
+          type: "POST",
+          data: sendData,
+          success: function (data, textStatus, jqXHR)
+          {
+            //Query
+            var returnData = JSON.parse(data);
+            localStorage.setItem("CLASSID", returnData.userInfo.class);
+            alert("Klasse ausgewählt!");
+            window.location = "inventoryscreen.html";
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert("Connection failed");
+          }
+        });
+    })
 });

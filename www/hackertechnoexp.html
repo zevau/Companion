@@ -12,16 +12,17 @@
 <link href="css/stylest.css" type="text/css" rel="stylesheet" media="all">
 <!--//Custom Theme files-->
 <!--js-->
-<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/functions"></script>
 <!-- //js -->
 
 
 <!--start-smooth-scrolling-->
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>	
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
+			$(".scroll").click(function(event){
 				event.preventDefault();
 				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 			});
@@ -44,7 +45,7 @@
 							<ul class="address-text">
 								<li><b>Hacker</b></li>
 								<li>In dem post-Technolapse Zeitalter erweist sich ein Hacker als unglaublich nützlich.
-									Ausgestattet mit bewaffneten Drohnen und ausgeklügelten Protokollen sind die Hacker 
+									Ausgestattet mit bewaffneten Drohnen und ausgeklügelten Protokollen sind die Hacker
 									ein wichtiger Baustein in jedem Einsatz der Technokraten.</li>
 							</ul>
 						</li>
@@ -53,7 +54,7 @@
 				</div>
 				<div class="container">
 					<div class="col-xs-6">
-						<button type="button" id="bestätigung">Bestätigung</button>
+						<button type="button" class="confirm" id="hkt">Bestätigung</button>
 					</div>
 					<div class="col-xs-6">
 						<a href="classest.html"><button type="button" id="zurück">Zurück</button></a>
@@ -68,11 +69,11 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 					$('#horizontalTab').easyResponsiveTabs({
-						type: 'default', //Types: default, vertical, accordion           
+						type: 'default', //Types: default, vertical, accordion
 						width: 'auto', //auto or any width like 600px
 						fit: true   // 100% fit in a container
 					});
-				});		
+				});
 			</script>
 			<!--//ResponsiveTabs-->
 		</div>
