@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Average Joe Beschreibung</title>
+<!--mobile apps-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--mobile apps-->
+<!--Custom Theme files-->
+<link href="css/bootstrapst.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/stylest.css" type="text/css" rel="stylesheet" media="all">
+<!--//Custom Theme files-->
+<!--js-->
+<script src="js/jquery-1.11.1.min.js"></script> 
+<!-- //js -->
+
+<!--start-smooth-scrolling-->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>	
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smooth-scrolling-->
+</head>
+<body>
+	<!--banner-->
+	<div id="home" class="banner">
+		<div class="banner-info">
+			<div class="container">
+				<div class="col-md-4 header-left">
+					<img src="img/LogoA.png" alt=""/>
+				</div>
+				<div class="col-md-8 header-right">
+					<h1>Average Joe</h1>
+					<ul class="address">
+						<li>
+							<ul class="address-text">
+								<li><b>Average Joe</b></li>
+								<li>Der Average Joe ist die Einordnung aller, die sich ohne Vorwissen im Krieg beteiligen wollen. 
+									Mit einem Sturmgewehr ausgerüstet dient der Average Joe als Rückgrat der avantgardistischen Streitmächte.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				</div>
+				<div class="container">
+					<div class="col-xs-6">
+						<button type="button" id="bestätigung">Bestätigung</button>
+					</div>
+					<div class="col-xs-6">
+						<a href="classesa.html"><button type="button" id="zurück">Zurück</button></a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--//banner-->
+			<!--ResponsiveTabs-->
+			<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$('#horizontalTab').easyResponsiveTabs({
+						type: 'default', //Types: default, vertical, accordion           
+						width: 'auto', //auto or any width like 600px
+						fit: true   // 100% fit in a container
+					});
+				});		
+			</script>
+			<!--//ResponsiveTabs-->
+		</div>
+	</div>
+	<!--//portfolio-->
+	<!--footer-->
+<div class="footer">
+		<div class="container">
+			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</a></p>
+		</div>
+		</div>
+	<!--//footer-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
