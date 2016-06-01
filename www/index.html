@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
 <title>Login</title>
 <!-- Custom Theme files -->
 <link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--Google Fonts-->
 <!--Google Fonts-->
 
-<!--Google Fonts-->
 </head>
 <body>
 <!--header start here-->
@@ -23,26 +25,24 @@
 			<form>
 				<div class="login-ic">
 					<i ></i>
-					<input type="text"  value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
+					<input type="text" id="username" value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
 					<div class="clear"> </div>
 				</div>
 				<div class="login-ic">
 					<i class="icon"></i>
-					<input type="password"  value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
+					<input type="password" id="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
 					<div class="clear"> </div>
 				</div>
-			
+
 				<div class="log-bwn">
-					
 					<input type="submit"  value="Login" >
-					</a>
 				</div>
 				</form>
 		<div class="footer">
 		<div class="container">
-			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</a></p>
+			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</p>
 		</div>
-		</div>	
+		</div>
 <!--header start here-->
 </body>
 </html>
