@@ -78,8 +78,8 @@ $("document").ready(function () {
             error: function (jqXHR, textStatus, errorThrown)
             {
                 var msg = '';
-                if (jqXHR.status === 0) {
-                    msg = 'Not connect.\n Verify Network.';
+                if (jqXHR.status == 0) {
+                    msg = 'Not connected.\n Verify Network.';
                 } else if (jqXHR.status === 404) {
                     msg = 'Requested page not found. [404]';
                 } else if (jqXHR.status === 500) {
