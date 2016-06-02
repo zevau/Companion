@@ -98,6 +98,7 @@ $("document").ready(function(){
       } else {
         loginMode = true;
         $("#reg-pw").hide();
+        $("#headline").html("Login");
       }
     });
     $("#register-btn").click(function(){
@@ -129,6 +130,7 @@ $("document").ready(function(){
   } else {
     loginMode = false;
     $("#reg-pw").show();
+    $("#headline").html("Register");
     //do somethign
   }
 });
