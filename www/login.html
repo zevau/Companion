@@ -28,7 +28,7 @@ neue index.html geplant -> IP(db/server) Abfrage, Weiterleitung etc.
             <div class="top-login">
                 <span><img src="img/group.png" alt=""/></span>
             </div>
-            <h1>Login</h1>
+            <h1 id="headline">Login</h1>
             <div class="login-top">
                 <form>
                     <div class="login-ic">
@@ -45,9 +45,17 @@ neue index.html geplant -> IP(db/server) Abfrage, Weiterleitung etc.
                                 }"/>
                         <div class="clear"> </div>
                     </div>
+                    <div class="login-ic" id="reg-pw">
+                        <i class="icon"></i>
+                        <input type="password" id="password2" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'password';
+                                }"/>
+                        <div class="clear"> </div>
+                    </div>
 
                     <div class="log-bwn">
-                        <input type="button"  value="Login" >
+                        <input type="button"  id="login-btn" value="Login" >
+                        <input type="button"  id="register-btn" value="Register" >
                     </div>
                 </form>
 

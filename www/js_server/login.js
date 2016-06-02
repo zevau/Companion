@@ -1,16 +1,15 @@
-$("document").ready(function () {
+$("document").ready(function(){
     //check ob eingeloggt:
     var userID = localStorage.getItem("USERID");
 
     if (userID !== null) {
         userAlreadyLoggedIn();
     }
-
-
-
+    var loginMode = true;
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
-    $(".log-bwn").on("click", function () {
-
+    $("#reg-pw").hide();
+    $("#login-btn").on("click", function () {
+      if(loginMode){
         var loginStr = $("#username").val();
         var passwordStr = $("#password").val();
 
@@ -96,56 +95,45 @@ $("document").ready(function () {
                 alert(msg);
             }
         });
-    });//No register-btn
-    /*$("#register-btn").click(function(){
-     var loginStr = $("#inputUser").val();
-     var passwordStr = $("#inputPassword").val();
+      } else {
+        loginMode = true;
+        $("#reg-pw").hide();
+      }
+    });
+    $("#register-btn").click(function(){
+       if (loginMode == false){
+        var loginStr = $("#username").val();
+        var passwordStr = $("#password").val();
+        var passwordStr2 = $("#password2").val();
 
-     var sendData = {action: "createuser", username: loginStr, password: passwordStr}; //Array
-     $.ajax({
-     url: postUrl,
-     type: "POST",
-     data: sendData,
-     success: function, (data, textStatus, jqXHR)
-     {
-     $.ajax({
-     url: postUrl,
-     type: "POST",
-     data: sendData,
-     success: function (data, textStatus, jqXHR)
-     {
-     var returnData = JSON.parse(data);
-     if (returnData.status.status === "ok") {
-     localStorage.setItem("USERID", returnData.userInfo.id);
-     if(returnData.userInfo.team === "0"){
-     alert("Team w�hlen!");
-     }else if(returnData.userInfo.class === "0"){
-     alert("Klasse w�hlen!");
-     }else{
-     alert("Anmeldung abgeschlossen!");
-     }
-     window.location = "faction.html";
-
-     } else {
-     alert(returnData.status.status + ": " + returnData.status.message);
-     }
-     },
-     error: function (jqXHR, textStatus, errorThrown)
-     {
-     alert("Connection failed");
-     }
-     });
-     },
-     error: function (jqXHR, textStatus, errorThrown)
-     {
-     alert("Connection failed");
-     }
-     })
-     })*/
-
+        var sendData = {action: "createuser", username: loginStr, password: passwordStr, password2: passwordStr2}; //Array
+        $.ajax({
+          url: postUrl,
+          type: "POST",
+          data: sendData,
+          success: function (data, textStatus, jqXHR)
+          {
+            var returnData = JSON.parse(data);
+            if (returnData.status.status === "ok") {
+              localStorage.setItem("USERID", returnData.userInfo.id);
+              alert("Registrierung abgeschlossen!");
+              window.location = "faction.html";
+            } else {
+              alert(returnData.status.status + ": " + returnData.status.message);
+            }
+          },
+          error: function (jqXHR, textStatus, errorThrown){
+            alert("Connection failed");
+          }
+        });
+  } else {
+    loginMode = false;
+    $("#reg-pw").show();
+    //do somethign
+  }
 });
-
-function userAlreadyLoggedIn(){
-            console.log("User eingeloggt");
-            //Weiterleitung an jeweilige Seite.
-}
+});
+  function userAlreadyLoggedIn(){
+              console.log("User eingeloggt");
+              //Weiterleitung an jeweilige Seite.
+  };
