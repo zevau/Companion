@@ -1,13 +1,4 @@
 $("document").ready(function () {
-    //check ob eingeloggt:
-    var userID = localStorage.getItem("USERID");
-
-    if (userID !== null) {
-        userAlreadyLoggedIn();
-    }
-
-
-
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
     $(".log-bwn").on("click", function () {
 
@@ -39,7 +30,7 @@ $("document").ready(function () {
                     /*
                      speichern:
                      localStorage.setItem("pref1", "val1");
-
+                     
                      lesen:
                      var pref1 = localStorage.getItem("pref1");
                      */
@@ -51,24 +42,18 @@ $("document").ready(function () {
 
                     if (returnData.userInfo.team === "0") {
                         //user hat noch kein team gew�hlt, weiterleitung zur team seite
-                        window.location = "faction.html";
+                        alert("Team wählen!");
                     } else if (returnData.userInfo.class === "0") {
                         //user hat noch keine klasse gew�hlt, weiterleitung zur klassen seite
-                       if(returnData.userInfo.team === "1"){
-                           window.location = "classest.html";
-                       }else if(returnData.userInfo.team === "2"){
-                           window.location = "classesa.html";
-                       }else{
-                           alert("What");
-                       }
+                        alert("Klasse wählen!");
                     } else {
                         //user hat bereits alles gew�hlt weiterleitung zum profil
-                        window.location = "inventoryscreen.html";
+                        alert("Anmeldung abgeschlossen!");
                     }
 
                     //hier jetzt zum testen und weil ich nicht weis wie genau und wann man team und klasse w�hlt leiten wir einfach an irgendeine seite weiter
                     //auf allen seiten  au�er der login seite m�sste am anfang bevor alles andere kommt erst mal abgefragt werden ob bereits ein user eingeloggt ist ich denke hier reicht die abfrage ob im localStorage die USERID gesetzt ist oder nicht, wenn ja kennen wir ja den user und k�nnen alle funktionen mit diesder ID abrufen
-
+                    window.location = "faction.html";
 
                 } else {
                     //nur zum debuggen
@@ -78,11 +63,11 @@ $("document").ready(function () {
             error: function (jqXHR, textStatus, errorThrown)
             {
                 var msg = '';
-                if (jqXHR.status == 0) {
-                    msg = 'Not connected.\n Verify Network.';
-                } else if (jqXHR.status === 404) {
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
                     msg = 'Requested page not found. [404]';
-                } else if (jqXHR.status === 500) {
+                } else if (jqXHR.status == 500) {
                     msg = 'Internal Server Error [500].';
                 } else if (exception === 'parsererror') {
                     msg = 'Requested JSON parse failed.';
@@ -100,7 +85,7 @@ $("document").ready(function () {
     /*$("#register-btn").click(function(){
      var loginStr = $("#inputUser").val();
      var passwordStr = $("#inputPassword").val();
-
+     
      var sendData = {action: "createuser", username: loginStr, password: passwordStr}; //Array
      $.ajax({
      url: postUrl,
@@ -125,7 +110,7 @@ $("document").ready(function () {
      alert("Anmeldung abgeschlossen!");
      }
      window.location = "faction.html";
-
+     
      } else {
      alert(returnData.status.status + ": " + returnData.status.message);
      }
@@ -142,10 +127,51 @@ $("document").ready(function () {
      }
      })
      })*/
-
+    $(".confirm").click(function () {
+        var class_str = $(this).attr('id');
+        var class_id;
+        if (class_str === "inf") {//infanterist
+            class_id = 1;
+        } else if (class_str === "amb") { //ambidexter
+            class_id = 2;
+        } else if (class_str === "enf") {//enforcer
+            class_id = 3;
+        } else if (class_str === "dis") {//disassembler
+            class_id = 4;
+        } else if (class_str === "min") {//mindscaper
+            class_id = 5;
+        } else if (class_str === "hkt") {//hacker(tech)
+            class_id = 6;
+        } else if (class_str === "avj") {//average joe
+            class_id = 7;
+        } else if (class_str === "pst") {//pistolero
+            class_id = 8;
+        } else if (class_str === "spc") {//specialist
+            class_id = 9;
+        } else if (class_str === "brw") {//brawler
+            class_id = 10;
+        } else if (class_str === "lib") {//limit breaker
+            class_id = 11;
+        } else if (class_str === "hka") {//hacker(avan)
+            class_id = 12;
+        }
+        var sendData = {action: "selectclass", classid: class_id, userid: localStorage.getItem("USERID")}
+        $.ajax({
+            url: postUrl,
+            type: "POST",
+            data: sendData,
+            success: function (data, textStatus, jqXHR)
+            {
+                //Query
+                var returnData = JSON.parse(data);
+                localStorage.setItem("CLASSID", returnData.userInfo.class);
+                alert("Klasse ausgewählt!");
+                window.location = "inventoryscreen.html";
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert("Connection failed");
+            }
+        });
+    })
 });
-
-function userAlreadyLoggedIn(){
-            console.log("User eingeloggt");
-            //Weiterleitung an jeweilige Seite.
-}

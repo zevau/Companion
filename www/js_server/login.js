@@ -63,7 +63,7 @@ $("document").ready(function () {
                        }
                     } else {
                         //user hat bereits alles gew�hlt weiterleitung zum profil
-                        window.location = "inventoryscreen.html";
+                        alert("Anmeldung abgeschlossen!");
                     }
 
                     //hier jetzt zum testen und weil ich nicht weis wie genau und wann man team und klasse w�hlt leiten wir einfach an irgendeine seite weiter

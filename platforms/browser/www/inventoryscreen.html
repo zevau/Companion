@@ -1,234 +1,1021 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 
-        <title>Inventory</title>
+<title>Inventory</title>
 
-        <!-- For-Mobile-Apps -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- //For-Mobile-Apps -->
+<!-- For-Mobile-Apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
 
-        <!-- Custom-Stylesheet-Links -->
-        <!-- Bootstrap-Core-CSS --> <link rel="stylesheet" href="css/averagejoe.css" type="text/css" media="all"/>
-        <!-- Index-Page-Styling --> <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
-        <script src="js/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="js_server/stats.js"></script>
+<!-- Custom-Stylesheet-Links -->
+	<!-- Bootstrap-Core-CSS --> <link rel="stylesheet" href="css/averagejoe.css" type="text/css" media="all"/>
+	<!-- Index-Page-Styling --> <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
+<!-- //Custom-Stylesheet-Links -->
 
-    </head>
-    <body>
-        <!-- header -->
-        <div class="header">
-            <div class="container">
-                <nav class="navbar navbar-default">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="logo">
-                            <div id="username">Username</div>
-                            <div id="classname">Klasse</div>
-                        </div>
-                    </div>
+<!-- Web-Fonts -->
+	
+<!-- //Web-Fonts -->
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-                        <nav class="cl-effect-13" id="cl-effect-13">
-                            <ul class="nav navbar-nav">
-                                <li><strong><a href="inventoryscreen.html" class="active">Inventar</a></strong></li>
-                                <li><strong><a href="questscreen.html" >Questlog</a></strong></li>
-                                <li><strong><a href="minimapscreen.html">Minimap</a></strong></li>
+</head>
+<body>
+<!-- header -->
+	<div class="header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+					<div class="logo">
+						<a class="navbar-brand" href="index.html">Klassenname</a>
+					</div>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="cl-effect-13" id="cl-effect-13">
+						<ul class="nav navbar-nav">
+							<li><strong><a href="inventoryscreen.html" class="active">Inventar</a></strong></li>
+							<li><strong><a href="questscreen.html" >Questlog</a></strong></li>
+							<li><strong><a href="minimapscreen.html">Minimap</a></strong></li>
+							
+							
+						</ul>
+					</nav>
+					
+				</div>
+		</div>
+	</div>
+<!-- header -->
+	<!-- //Formats -->
+
+	<!-- Progressive-Effects -->
+	<div class="progressive-effects" id="skills" >
+		<div class="container">
+
+			<!-- Skills -->
+			<div id="about-us" class="parallax">
+				<div class="stats">
+
+		
+				
+				<div class="clearfix"></div>
+				</div>
+				<div class="col-xs-4">
+				<div class="row">
+					<div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+						<div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+							<p class="lead">Health</p>
+							<div class="progress">
+								<div style="background-color:#FF0011" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="90">90%</div>
+							</div>
+						</div>
+						<div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+							<p class="lead">Experience</p>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="95">95%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="col-xs-4">
+					<div  class="stats-img">
+							<img src="img/KRONKORKEN-STERNschwarz.png"/>
+					<div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='210' data-delay='2' data-increment="1">169</div>
+					</div>
+					
+						<h3>Inventar</h3>
+				<div class="heading-underline">
+				<div class="inventar" >
+				
+
+<script type="text/javascript">
+
+// main
+
+function main()
+{
+	var itemCategories = 
+	[
+
+		new ItemCategory("Gloves"),
+		new ItemCategory("Handheld"),
+		new ItemCategory("Hat"),
+		new ItemCategory("Pants"),
+		new ItemCategory("Potion"),
+		new ItemCategory("Ring"),
+		new ItemCategory("Scroll"),
+		new ItemCategory("Shirt"),
+		new ItemCategory("Shoes"),
+		new ItemCategory("Treasure"),
+
+	];
+
+	var itemDefns = 
+	[	
+		new ItemDefn
+		(
+			"Boots of Stomping", 
+			1, 
+			[ "Shoes" ], 	 
+			function(item)
+			{
+				alert("You step on some walnuts, and feast on their meat.");
+			}
+		),
+		new ItemDefn("Coins", 				1, [ "Treasure" ], 	null ),
+		new ItemDefn("Gem", 				1, [ "Treasure" ], 	null ),
+		new ItemDefn
+		(
+			"Gloves of Dust Detection", 	
+			1, 
+			[ "Gloves" ],
+			function(item) 
+			{ 
+				alert("You run a finger along the wall.  Yup, there's dust here.");
+			}
+		),
+		new ItemDefn("Helmet of Increased Height", 	1, [ "Hat" ], 		null ),
+		new ItemDefn("Jerkin of Jerkininess", 		1, [ "Shirt" ], 	null ),
+		new ItemDefn("Pectoral Breastplate", 		1, [ "Shirt" ], 	null ),
+		new ItemDefn
+		(
+			"Potion of Mind Erasing", 
+			1, 
+			[ "Potion" ], 	
+			function(item)
+			{
+				alert("You wake up several hours later.  It's amazing you weren't robbed.");
+			}
+		),
+		new ItemDefn
+		(
+			"Potion of Soothe Guts", 
+			1, 
+			[ "Potion" ],
+			function (item)
+			{
+				alert("Ah, the refreshing taste of bismuth.  As usual, you vomit anyway.");
+			}
+		),
+		new ItemDefn("Ring of Roundness", 		1, [ "Ring" ], 		null ),
+		new ItemDefn("Ring of Shinyness", 		1, [ "Ring" ], 		null ),
+		new ItemDefn
+		(
+			"Scroll of Teleport", 
+			1, 
+			[ "Scroll" ],
+			function (item) 
+			{ 
+				alert("Yeah, this place looks completely different from the other one."); 
+			}
+		),
+		new ItemDefn("Shield of Concealment", 		1, [ "Handheld" ], 	null ),
+		new ItemDefn
+		(
+			"Sword of Keenness", 
+			1, 
+			[ "Handheld" ],
+			function(item)
+			{
+				alert("You test the blade.  Contrary to expectations, it's quite dull.");
+			}
+		),
+		new ItemDefn("Trousers of Modesty", 		1, [ "Pants" ], 	null ),
+	];
+
+	var userEquipmentDefns =
+	[
+		new UserEquipmentDefn
+		(
+			"Biped",
+			// slotDefns
+			[
+				
+				new UserEquipmentSlotDefn("Waffe", [ "Shirt" ] ),
+	
+			]
+		)
+	];
+
+	var user = new User
+	(
+		"User0",
+		new ItemHolder
+		(
+			"Inventory",
+			[
+				new Item("Boots of Stomping", 1),
+				new Item("Gloves of Dust Detection", 1),
+				new Item("Jerkin of Jerkininess", 1),
+				new Item("Pectoral Breastplate", 1),
+				new Item("Ring of Shinyness", 3),
+				new Item("Sword of Keenness", 1),
+				new Item("Scroll of Teleport", 5),
+				new Item("Trousers of Modesty", 1),
+			]
+		),
+		new UserEquipment
+		(
+			"Biped",
+			[
+				new UserEquipmentSlotAssignment
+				(
+					"Waffe", "Pectoral Breastplate"
+				),
+			]
+		)
+	);
+
+	var world = new World
+	(
+		"World0",
+		itemDefns,
+		userEquipmentDefns,
+		user,
+		// itemsOnGround
+		[
+			new Item("Coins", 100),
+			new Item("Gem", 7),
+			new Item("Shield of Concealment", 1),
+		]
+	);
+
+	Globals.Instance.initialize(world);
+
+}
+
+// classes
+
+function Array_Extensions()
+{}
+{
+	Array.prototype.addLookups = function(keyName)
+	{
+		for (var i = 0; i < this.length; i++)
+		{
+			var item = this[i];
+			var keyValue = item[keyName];
+			this[keyValue] = item;
+		}
+	}
+}
+
+function DisplayHelper()
+{}
+{
+	DisplayHelper.prototype.drawItem = function
+	(
+		item, actionsAvailable, parentElement
+	)
+	{
+		var divItem = document.createElement("div");
+		divItem.style.border = "1px solid";
+
+		var itemAsString = item.toString();
+
+		var divItemInfo = document.createElement("div");
+		divItemInfo.innerHTML = itemAsString;
+		divItemInfo.style.float = "left";
+		divItem.appendChild(divItemInfo);
+
+		for (var i = 0; i < actionsAvailable.length; i++)
+		{
+			var action = actionsAvailable[i];
+			
+			this.drawItemAction(action, item, divItem);
+		}
+
+		parentElement.appendChild(divItem);
+	}
+
+	DisplayHelper.prototype.drawItemAction = function
+	(
+		action, item, parentElement
+	)
+	{
+		var buttonAction = document.createElement("button");
+		buttonAction.innerHTML = action.name;
+		buttonAction.onclick = action.perform.bind(action, item);
+		parentElement.appendChild(buttonAction);
+	}
+
+	DisplayHelper.prototype.drawItemHolder = function
+	(
+		itemHolder, actionsAvailable, parentElement
+	)
+	{
+		var divHolder = document.createElement("div");
+		divHolder.style.border = "1px solid";
+		divHolder.style.margin = "8px";
+
+		var pHolderName = document.createElement("p");
+		pHolderName.innerHTML = itemHolder.name + ":";
+		divHolder.appendChild(pHolderName);
+
+		var divItems = document.createElement("div");
+
+		var items = itemHolder.items;
+		for (var i = 0; i < items.length; i++)
+		{
+			var item = items[i];
+			this.drawItem(item, actionsAvailable, divItems);
+		}
+
+		divHolder.appendChild(divItems);
+
+		parentElement.appendChild(divHolder);
+	}
+
+	DisplayHelper.prototype.drawUser = function(user, parentElement)
+	{
+		var divUser = document.createElement("div");
+		divUser.style.border = "1px solid";
+		divUser.style.margin = "8px";
+
+		var pUserName = document.createElement("p");
+		pUserName.innerHTML = "User: " + user.name;
+		divUser.appendChild(pUserName);
+
+		this.drawUserEquipment
+		(
+			user.equipment, 
+			divUser
+		);
+
+		var actionsAvailable = 
+		[
+			ItemAction.Instances.Use,
+			ItemAction.Instances.Equip,
+			
+			
+		];
+		
+		this.drawItemHolder
+		(
+			user.itemHolder, 
+			actionsAvailable,
+			divUser
+		);
+
+		parentElement.appendChild(divUser);
+	}
 
 
-                            </ul>
-                        </nav>
+	DisplayHelper.prototype.drawUserEquipment = function
+	(
+		userEquipment, parentElement
+	)
+	{
+		var divUserEquipment = document.createElement("div");
+		divUserEquipment.style.border = "1px solid";
+		divUserEquipment.style.margin = "8px";
 
-                    </div>
-            </div>
-        </div>
-        <!-- header -->
-        <!-- //Formats -->
+		var pEquipment = document.createElement("p");
+		pEquipment.innerHTML = "Equipment:";
+		divUserEquipment.appendChild(pEquipment);
 
-        <!-- Progressive-Effects -->
-        <div class="progressive-effects" id="skills" >
-            <div class="container">
+		var equipmentDefn = userEquipment.defn();
+		var slots = userEquipment.slots;
 
-                <!-- Skills -->
-                <div id="about-us" class="parallax">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <div class="row">
-                                <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-                                        <p class="lead">Health</p>
-                                        <div class="progress">
-                                            <div id="health" style="background-color:#FF0011" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="90">90%</div>
-                                        </div>
-                                    </div>
-                                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                                        <p class="lead">Experience</p>
-                                        <div class="progress">
-                                            <div id="reaction" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="95">95%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <div  class="responsive-img ">
-                                <img src="img/KRONKORKEN-STERNschwarz.png"/>
+		var actions = 
+		[
+			ItemAction.Instances.Use
+		];
 
-                            </div>
-                            <div class='nummscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='210' data-delay='2' data-increment="1">169</div>
+		for (var i = 0; i < slots.length; i++)
+		{
+			var slot = slots[i];
+			this.drawUserEquipmentSlot
+			(
+				slot, actions, divUserEquipment
+			);
+		}
+
+		parentElement.appendChild(divUserEquipment);
+	}	
 
 
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="row">
-                                <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-                                    <p class="lead">Reaction</p>
-                                    <div class="progress">
-                                        <div id="xp" style="background-color:#5EFC03" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="85">85%</div>
-                                    </div>
-                                </div>
-                                <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
-                                    <p class="lead">Stamina</p>
-                                    <div class="progress">
-                                        <div id="stamina" style="background-color:#FCED1C" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="80">80%</div>
-                                    </div>
-                                </div>
+	DisplayHelper.prototype.drawUserEquipmentSlot = function
+	(
+		slot, actionsAvailable, parentElement
+	)
+	{
+		var divSlot = document.createElement("div");
+		divSlot.style.border = "1px solid";
+		divSlot.style.margin = "8px";
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Inventar</h3>
-                            <div class="heading-underline">
-                                <div class="inventar" >
+		var divSlotDefnName = document.createElement("div");
+		divSlotDefnName.innerHTML = slot.defnName + ":";
+		divSlotDefnName.style.float = "left";
+		divSlot.appendChild(divSlotDefnName);
+
+		var slotItem = slot.item;
+
+		if (slotItem == null)
+		{
+			var divEmpty = document.createElement("div");
+			divEmpty.innerHTML = "[empty]";
+			divSlot.appendChild(divEmpty);
+		}
+		else
+		{
+			var actionsAvailable = 
+			[
+				ItemAction.Instances.Unequip,
+			];
+
+			this.drawItem
+			(
+				slot.item, 
+				actionsAvailable, 
+				divSlot
+			);
+		}
+
+		parentElement.appendChild(divSlot);
+	}
+
+	DisplayHelper.prototype.drawWorld = function(world)
+	{
+		var divWorldID = "divWorld";
+		var divWorld = document.getElementById(divWorldID);
+
+		if (divWorld != null)
+		{
+			document.body.removeChild(divWorld);
+		}
+
+		divWorld = document.createElement("div");
+		divWorld.id = divWorldID;
+		divWorld.style.border = "1px solid";
+		divWorld.style.margin = "8px";
+
+		var pWorldName = document.createElement("p");
+		pWorldName.innerHTML = "World: " + world.name;
+		divWorld.appendChild(pWorldName);
+
+		this.drawUser(world.user, divWorld);
+
+		var actionsAvailableForGround =
+		[
+			ItemAction.Instances.Take,
+		];
+
+		this.drawItemHolder
+		(
+			world.itemHolderForGround, 
+			actionsAvailableForGround,
+			divWorld
+		);
+
+		document.body.appendChild(divWorld);
+	}
+}
+
+function Globals()
+{}
+{
+	Globals.Instance = new Globals();
+
+	Globals.prototype.initialize = function(world)
+	{
+		this.world = world;
+		this.displayHelper = new DisplayHelper();
+
+		this.world.initialize();
+
+		this.displayHelper.drawWorld(this.world);
+	}
+}
+
+function Image(filePath)
+{
+	this.filePath = filePath;
+}
+
+function Item(defnName, quantity)
+{
+	this.id = Item.IDNext++;
+	this.defnName = defnName;
+	this.quantity = quantity;
+}
+{
+	// static variables
+
+	Item.IDNext = 0;
+
+	// instance methods
+
+	Item.prototype.defn = function()
+	{
+		return Globals.Instance.world.itemDefns[this.defnName];
+	}
+
+	Item.prototype.use = function()
+	{
+		var use = this.defn().use;
+		if (use == null)
+		{
+			alert("Nothing happens.");
+		}
+		else
+		{
+			use(this);
+		}
+	}
+
+	// string 
+
+	Item.prototype.toString = function()
+	{
+		return this.defnName + " (" + this.quantity + ")";
+	}
+}
+
+function ItemAction(name, perform)
+{
+	this.name = name;
+	this.perform = perform;
+}
+{
+	ItemAction.Instances = new ItemAction_Instances();
+
+	function ItemAction_Instances()
+	{
+		
+
+		this.Equip = new ItemAction
+		(
+			"Equip",
+			function(item)
+			{ 
+				var world = Globals.Instance.world;
+				var user = world.user;
+				var equipment = user.equipment;
+				user.equipment.itemEquip(item);
+				Globals.Instance.displayHelper.drawWorld(world);
+			}
+		);
 
 
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	
+		this.Take = new ItemAction
+		(
+			"Take", 
+			function(item)
+			{ 
+				var world = Globals.Instance.world;
+				var user = world.user;
+				world.itemHolderForGround.itemRemove(item);
+				user.itemHolder.itemAdd(item);
+				Globals.Instance.displayHelper.drawWorld(world);
+			}
+		);
 
-            </div>
-            <!-- //Skills -->
+		this.Unequip = new ItemAction
+		(
+			"Unequip", 
+			function(item)
+			{ 
+				var world = Globals.Instance.world;
+				var user = world.user;
+				var equipment = user.equipment;
+				user.equipment.itemUnequip(item);
+				Globals.Instance.displayHelper.drawWorld(world);
+			}
+		);
 
-            <!-- Stats -->
+		this.Use = new ItemAction
+		(
+			"Use", 
+			function(item)
+			{ 
+				item.use();
+			}
+		);
+	}
+}
+
+function ItemCategory(name)
+{
+	this.name = name;
+}
+
+function ItemDefn(name, weight, categoryNames, use)
+{
+	this.name = name;
+	this.weight = weight;
+	this.categoryNames = categoryNames;
+	this.use = use;
+}
+
+function ItemHolder(name, items)
+{
+	this.name = name;
+	this.items = items;
+}
+{
+	// instance methods
+
+	ItemHolder.prototype.itemAdd = function(itemToAdd)
+	{
+		var itemExisting = null;
+
+		for (var i = 0; i < this.items.length; i++)
+		{
+			var item = this.items[i];
+			if (item.defnName == itemToAdd.defnName)
+			{
+				itemExisting = item;
+				break;
+			}
+		}
+
+		if (itemExisting == null)
+		{
+			this.items.push(itemToAdd);
+		}
+		else
+		{
+			itemExisting.quantity += itemToAdd.quantity;
+		}
+	}
+
+	ItemHolder.prototype.itemRemove = function(item)
+	{
+		var itemIndex = this.items.indexOf(item);
+		this.items.splice
+		(
+			itemIndex, 1
+		);
+	}
+
+	ItemHolder.prototype.item = function(itemDefnNameToGet)
+	{
+		var returnValue = null;
+
+		for (var i = 0; i < this.items.length; i++)
+		{	
+			var item = this.items[i];
+			var itemDefnName = item.defnName;
+			if (itemDefnName == itemDefnNameToGet)
+			{
+				returnValue = item;
+				break;
+			}
+		}
+
+		return returnValue; 
+	}
+
+	ItemHolder.prototype.itemUse = function(item)
+	{
+		item.use(this);
+	}
+}
+
+function User(name, itemHolder, equipment)
+{
+	this.name = name;
+	this.itemHolder = itemHolder;
+	this.equipment = equipment;
+}
+{
+	User.prototype.initialize = function()
+	{
+		this.equipment.initialize(this);
+	}
+}
+
+function UserEquipment(defnName, slotAssignments)
+{
+	this.defnName = defnName;
+	this.slotAssignments = slotAssignments;
+}
+{
+
+	// instance methods
+
+	UserEquipment.prototype.defn = function()
+	{
+		return Globals.Instance.world.equipmentDefns[this.defnName];
+	}
+
+	UserEquipment.prototype.initialize = function(user)
+	{
+		var slotDefns = this.defn().slotDefns;
+
+		this.slots = [];
+
+		for (var i = 0; i < slotDefns.length; i++)
+		{
+			var slotDefn = slotDefns[i];
+			var slotDefnName = slotDefn.name;
+			var slot = new UserEquipmentSlot(slotDefnName, null);
+			this.slots.push(slot);
+		}
+
+		this.slots.addLookups("defnName");
+
+		for (var i = 0; i < this.slotAssignments.length; i++)
+		{
+			var slotAssignment = this.slotAssignments[i];
+			var slotDefnName = slotAssignment.slotDefnName;
+			var itemDefnName = slotAssignment.itemDefnName;
+
+			var slot = this.slots[slotDefnName];
+			var itemInSlot = user.itemHolder.item(itemDefnName);
+			slot.item = itemInSlot;
+		}
+	}
+
+	UserEquipment.prototype.itemEquip = function(itemToEquip)
+	{
+		var userEquipmentDefn = this.defn();
+		var itemDefn = itemToEquip.defn();
+		var itemDefnCategoryNames = itemDefn.categoryNames;
+
+		var slotToEquipItemIn = null;
+
+		for (var i = 0; i < this.slots.length; i++)
+		{
+			var slot = this.slots[i];
+			if (slot.item == itemToEquip)
+			{
+				slotToEquipItemIn = slot;
+				break;
+			}
+			else if (slot.item == null)
+			{
+				var slotDefn = slot.defn(userEquipmentDefn);
+				var itemCategoryNamesEquippable =
+					slotDefn.itemCategoryNamesEquippable;
+				for (var j = 0; j < itemCategoryNamesEquippable.length; j++)
+				{
+					var itemCategoryNameEquippable =
+						itemCategoryNamesEquippable[j];
+					var index = itemDefnCategoryNames.indexOf
+					(
+						itemCategoryNameEquippable
+					);
+	
+					if (index >= 0)
+					{
+						slotToEquipItemIn = slot;
+						break;
+					}
+				}
+			}
+		}
+
+		if (slotToEquipItemIn == null)
+		{
+			alert("No free slots!");
+		}
+		else
+		{
+			slotToEquipItemIn.item = itemToEquip;
+		}
+	}
 
 
-        </div>
-        <!-- //Stats -->
+	UserEquipment.prototype.itemEquipped = function(itemToCheck)
+	{
+		var returnValue = false;
+
+		for (var i = 0; i < this.slots.length; i++)
+		{
+			var slot = this.slots[i];
+			var slotItem = slot.item;
+			if (slotItem == itemToCheck)
+			{
+				returnValue = true;
+				break;
+			}
+		}
+
+		return returnValue;
+	}
 
 
 
-        <!-- Progressive-Effects -->
+	UserEquipment.prototype.itemUnequip = function(itemToUnequip)
+	{
+		for (var i = 0; i < this.slots.length; i++)
+		{
+			var slot = this.slots[i];
+			var slotItem = slot.item;
+			if (slotItem == itemToUnequip)
+			{
+				slot.item = null;
+				break;
+			}
+		}
+	}
+}
 
-        <!--footer-->
-        <div class="footer">
-            <div class="container">
-                <p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</p>
-            </div>
-        </div>
+function UserEquipmentDefn(name, slotDefns)
+{
+	this.name = name;
+	this.slotDefns = slotDefns;
+	this.slotDefns.addLookups("name");
+}
 
-        <!-- Custom-JavaScript-File-Links -->
+function UserEquipmentSlot(defnName, item)
+{
+	this.defnName = defnName;
+	this.item = item;
+}
+{
+	UserEquipmentSlot.prototype.defn = function(userEquipmentDefn)
+	{
+		return userEquipmentDefn.slotDefns[this.defnName];
+	}
+}
 
-        <!-- Supportive-JavaScript --> <script type="text/javascript" src="js/jquery.min.js"></script>
-        <!-- Necessary-JS-File-For-Bootstrap --> <script type="text/javascript" src="js/bootstrap.min.js"></script>
+function UserEquipmentSlotAssignment(slotDefnName, itemDefnName)
+{
+	this.slotDefnName = slotDefnName;
+	this.itemDefnName = itemDefnName;
+}
 
-        <!-- Banner-Slider-JavaScript -->
-        <script src="js/responsiveslides.min.js"></script>
-        <script>
-            $(function () {
-                $("#slider").responsiveSlides({
-                    auto: true,
-                    nav: true,
-                    speed: 800,
-                    namespace: "callbacks",
-                    pager: true,
-                });
-            });
-        </script>
-        <!-- //Banner-Slider-JavaScript -->
+function UserEquipmentSlotDefn(name, itemCategoryNamesEquippable)
+{
+	this.name = name;
+	this.itemCategoryNamesEquippable = itemCategoryNamesEquippable;
+}
 
-        <!-- Owl-Carousel-JavaScript 
-        <script src="js/owl.carousel.js"></script>
-        <script>
-                $(document).ready(function() {
-                        $("#owl-demo").owlCarousel ({
-                                items : 4,
-                                lazyLoad : true,
-                                autoPlay : true,
-                                pagination : false,
-                        });
-                });
-        </script>
-        <!-- //Owl-Carousel-JavaScript -->
+function World(name, itemDefns, equipmentDefns, user, itemsOnGround)
+{
+	this.name = name;
 
-        <!-- Magnific-Popup-Display-JavaScript -->
-        <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-        <script>
-            $(document).ready(function () {
-                $('.popup-with-zoom-anim').magnificPopup({
-                    type: 'inline',
-                    fixedContentPos: false,
-                    fixedBgPos: true,
-                    overflowY: 'auto',
-                    closeBtnInside: true,
-                    preloader: false,
-                    midClick: true,
-                    removalDelay: 300,
-                    mainClass: 'my-mfp-zoom-in'
-                });
-            });
-        </script>
-        <!-- //Magnific-Popup-Display-JavaScript -->
+	this.itemDefns = itemDefns;
+	this.itemDefns.addLookups("name");
 
-        <!-- Progressive-Effects-Animation-JavaScript -->
-        <script type="text/javascript" src="js/jquery.inview.min.js"></script>
-        <script type="text/javascript" src="js/wow.min.js"></script>
-        <script type="text/javascript" src="js/mousescroll.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/numscroller-1.0.js"></script>
-        <!-- //Progressive-Effects-Animation-JavaScript -->
+	this.equipmentDefns = equipmentDefns;
+	this.equipmentDefns.addLookups("name");
 
-        <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                var defaults = {
-                    containerID: 'toTop', // fading element id
-                    containerHoverID: 'toTopHover', // fading element hover id
-                    scrollSpeed: 100,
-                    easingType: 'linear'
-                };
-                $().UItoTop({easingType: 'easeOutQuart'});
-            });
-        </script>
-        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
-        <!-- //Slide-To-Top JavaScript -->
+	this.user = user;
+	this.itemHolderForGround = new ItemHolder
+	(
+		"Ground",
+		itemsOnGround
+	);
+}
+{
+	World.prototype.initialize = function()
+	{
+		this.user.initialize();
+	}
+}
 
-        <!-- Smooth-Scrolling-JavaScript -->
-        <script type="text/javascript" src="js/move-top.js"></script>
-        <script type="text/javascript" src="js/easing.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(".scroll, .navbar li a, .footer li a").click(function (event) {
-                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-                });
-            });
-        </script>
-        <!-- //Smooth-Scrolling-JavaScript -->
+// run
 
-        <!-- //Custom-JavaScript-File-Links -->
+main();
 
-    </body>
+</script>
+</div>
+</div>				
+				</div>
+				<div class="col-xs-4">
+				<div class="row">
+						<div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+							<p class="lead">Reaction</p>
+							<div class="progress">
+								<div style="background-color:#5EFC03" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="85">85%</div>
+							</div>
+						</div>
+						<div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+							<p class="lead">Stamina</p>
+							<div class="progress">
+								<div style="background-color:#FCED1C" class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="80">80%</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				</div>
+			
+			</div>
+			<!-- //Skills -->
+
+			<!-- Stats -->
+			
+
+			</div>
+			<!-- //Stats -->
+
+		</div>
+	</div >
+	
+	<!-- Progressive-Effects -->
+
+<!--footer-->
+<div class="footer">
+		<div class="container">
+			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</a></p>
+		</div>
+		</div>
+
+<!-- Custom-JavaScript-File-Links -->
+
+	<!-- Supportive-JavaScript --> <script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- Necessary-JS-File-For-Bootstrap --> <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!-- Banner-Slider-JavaScript -->
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider").responsiveSlides({
+				auto: true,
+				nav: true,
+				speed: 800,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	</script>
+	<!-- //Banner-Slider-JavaScript -->
+
+	<!-- Owl-Carousel-JavaScript 
+	<script src="js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#owl-demo").owlCarousel ({
+				items : 4,
+				lazyLoad : true,
+				autoPlay : true,
+				pagination : false,
+			});
+		});
+	</script>
+	<!-- //Owl-Carousel-JavaScript -->
+
+	<!-- Magnific-Popup-Display-JavaScript -->
+	<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<script>
+	$(document).ready(function() {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+	});
+	</script>
+	<!-- //Magnific-Popup-Display-JavaScript -->
+
+	<!-- Progressive-Effects-Animation-JavaScript -->
+	<script type="text/javascript" src="js/jquery.inview.min.js"></script>
+	<script type="text/javascript" src="js/wow.min.js"></script>
+	<script type="text/javascript" src="js/mousescroll.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/numscroller-1.0.js"></script>
+	<!-- //Progressive-Effects-Animation-JavaScript -->
+
+	<!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 100,
+				easingType: 'linear'
+			};
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
+	<!-- //Slide-To-Top JavaScript -->
+
+	<!-- Smooth-Scrolling-JavaScript -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll, .navbar li a, .footer li a").click(function(event){
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //Smooth-Scrolling-JavaScript -->
+
+<!-- //Custom-JavaScript-File-Links -->
+
+</body>
 </html>

@@ -12,17 +12,15 @@
 <link href="css/stylest.css" type="text/css" rel="stylesheet" media="all">
 <!--//Custom Theme files-->
 <!--js-->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js_server/checklogin.js"></script>
-<script src="js_server/faction.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script> 
 <!-- //js -->
 
 <!--start-smooth-scrolling-->
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>	
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){
+			$(".scroll").click(function(event){		
 				event.preventDefault();
 				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 			});
@@ -56,7 +54,7 @@
 				</div>
 				<div class="container">
 					<div class="col-xs-6">
-						<button type="button" class="confirm_faction" id="select-a">Bestätigung</button>
+						<button type="button" id="bestätigung">Bestätigung</button>
 					</div>
 					<div class="col-xs-6">
 						<a href="faction.html"><button type="button" id="zurück">Zurück</button></a>
@@ -71,11 +69,11 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 					$('#horizontalTab').easyResponsiveTabs({
-						type: 'default', //Types: default, vertical, accordion
+						type: 'default', //Types: default, vertical, accordion           
 						width: 'auto', //auto or any width like 600px
 						fit: true   // 100% fit in a container
 					});
-				});
+				});		
 			</script>
 			<!--//ResponsiveTabs-->
 		</div>
@@ -87,8 +85,8 @@
 		</div>
 		</div>
 	<!--//footer-->
-
-
+	
+	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -1,46 +1,48 @@
-<!--
-NEUE Login-Seite: login.html (Kopie der alten index.html)
-neue index.html geplant -> IP(db/server) Abfrage, Weiterleitung etc.
-
-
--->
-
-
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <script src="js/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="js_server/login.js"></script>
-        <title>Login</title>
-        <!-- Custom Theme files -->
-        <link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
-        <!-- Custom Theme files -->
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <!--Google Fonts-->
-        <!--Google Fonts-->
+<head>
+<title>Login</title>
+<!-- Custom Theme files -->
+<link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!--Google Fonts-->
 
-    </head>
-    <body>
-        <!--header start here-->
-        <div class="login-form">
-            <div class="top-login">
-                <span><img src="img/group.png" alt=""/></span>
-            </div>
-            <h1>Login</h1>
-            <div class="login-top">
-                <a href="login.html">Zum Login</a>
-
-            </div>
-        </div>
-        <div class="footer">
-            <div class="container">
-                <p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</p>
-            </div>
-        </div>
-
-
-        <!--header start here-->
-    </body>
+<!--Google Fonts-->
+</head>
+<body>
+<!--header start here-->
+<div class="login-form">
+			<div class="top-login">
+				<span><img src="img/group.png" alt=""/></span>
+			</div>
+			<h1>Login</h1>
+			<div class="login-top">
+			<form>
+				<div class="login-ic">
+					<i ></i>
+					<input type="text"  value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
+					<div class="clear"> </div>
+				</div>
+				<div class="login-ic">
+					<i class="icon"></i>
+					<input type="password"  value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
+					<div class="clear"> </div>
+				</div>
+			
+				<div class="log-bwn">
+					
+					<input type="submit"  value="Login" >
+					</a>
+				</div>
+				</form>
+		<div class="footer">
+		<div class="container">
+			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</a></p>
+		</div>
+		</div>	
+<!--header start here-->
+</body>
 </html>
