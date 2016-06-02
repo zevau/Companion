@@ -1,6 +1,9 @@
 $("document").ready(function () {
-    //noch nicht fertig
+    $(".loading").fadeIn();
+    
     var userDetails = null;
+
+    
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
     
     
@@ -16,17 +19,31 @@ $("document").ready(function () {
                 var returnData = JSON.parse(data);
                 if (returnData.status.status === "ok") {
                     
+                    userDetails = returnData.userDetails;
+                    
+                                   
+                    
+                    
                     $("#username").html(returnData.userDetails.name);
                     $("#classname").html(returnData.userDetails.class_name);
-                    $("#health").attr("aria-valuetransitiongoal",returnData.userDetails.hp);
-                    $("#health").html(returnData.userDetails.hp + "%");
-                    //$("#health").css("width",returnData.userDetails.hp + "%");
-                    $("#xp").attr("aria-valuetransitiongoal",returnData.userDetails.xp);
-                    $("#xp").html(returnData.userDetails.xp + "%");
-                    $("#reaction").attr("aria-valuetransitiongoal",returnData.userDetails.reaction);
-                    $("#reaction").html(returnData.userDetails.reaction + "%");
-                    $("#stamina").attr("aria-valuetransitiongoal",returnData.userDetails.stamina);
-                    $("#stamina").html(returnData.userDetails.stamina + "%");
+                    
+                    $("#health").attr("aria-valuenow",returnData.userDetails.hp);
+                    $("#health").html(returnData.userDetails.hp);
+                    $("#health").css("width",returnData.userDetails.hp + "%");
+                    
+                    $("#xp").attr("aria-valuenow",returnData.userDetails.xp);
+                    $("#xp").html(returnData.userDetails.xp);
+                    $("#xp").css("width",returnData.userDetails.xp + "%");
+                    
+                    $("#reaction").attr("aria-valuenow",returnData.userDetails.reaction);
+                    $("#reaction").html(returnData.userDetails.reaction);
+                    $("#reaction").css("width",returnData.userDetails.reaction + "%");
+                    
+                    $("#stamina").attr("aria-valuenow",returnData.userDetails.stamina);
+                    $("#stamina").html(returnData.userDetails.stamina);
+                    $("#stamina").css("width",returnData.userDetails.stamina + "%");
+                    
+                    $(".loading").fadeOut();
                 }           
             },
             error: function (jqXHR, textStatus, errorThrown)
