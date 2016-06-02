@@ -1,12 +1,11 @@
 $("document").ready(function(){
-    //check ob eingeloggt:
+    
+    checkLogin();
+    
     var userID = localStorage.getItem("USERID");
-
-    if (userID !== null) {
-        userAlreadyLoggedIn();
-    }
     var loginMode = true;
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
+    
     $("#reg-pw").hide();
     $("#login-btn").on("click", function () {
       if(loginMode){
@@ -139,3 +138,69 @@ $("document").ready(function(){
               console.log("User eingeloggt");
               //Weiterleitung an jeweilige Seite.
   };
+ function checkLogin() {
+
+        if (localStorage.getItem("USERID") !== null) {
+            var postUrl = "http://pb.ingamelandscapes.de/query.php";
+
+
+            var sendData = {action: "getuserdetails", userid: localStorage.getItem("USERID")}; //Array
+
+            $.ajax({
+                url: postUrl,
+                type: "POST",
+                data: sendData,
+                success: function (data, textStatus, jqXHR)
+                {
+
+                    var returnData = JSON.parse(data);
+                    
+                    console.log(returnData);
+                    if (returnData.status.status === "ok") {
+                        if (returnData.userDetails !== null) {
+                            if (returnData.userDetails.team === "0") {
+                                window.location = "faction.html";
+                            } else if (returnData.userDetails.class === "0") {
+                                if (returnData.userInfo.team === "1") {
+                                    window.location = "classest.html";
+                                } else if (returnData.userInfo.team === "2") {
+                                    window.location = "classesa.html";
+                                } else {
+                                    alert("What");
+                                }
+                            }else if (returnData.userDetails.class !== "0" || returnData.userDetails.team !== "0") {
+                                window.location = "inventoryscreen.html";
+                            }
+
+                        }else{
+                            $(".loading").fadeOut();
+                        }
+
+                    } else {
+                        alert(returnData.status.message);
+                        $(".loading").fadeOut();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    var msg = '';
+                    if (jqXHR.status == 0) {
+                        msg = 'Not connected.\n Verify Network.';
+                    } else if (jqXHR.status === 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status === 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    alert(msg);
+                }
+            });
+        }
+    }

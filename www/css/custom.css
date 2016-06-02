@@ -1,0 +1,42 @@
+body{
+    max-width: 100% !important;
+   
+}
+#username{
+    padding-left: 27px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#classname{
+    padding-left: 27px;
+    font-size: 14px;
+ 
+}
+#kronkorken{
+    text-align: center;
+    font-weight: bold;
+    
+}
+.lead-custom{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer{
+    min-height: 20px;
+    position: fixed;
+    bottom:0px;
+    margin:0px !important;
+    padding: 0px;
+    width:100%;
+}
+
+.inventoryItem{
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    margin: 5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    border: 1px solid #000;
+    color:#fff;
+}
