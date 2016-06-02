@@ -30,7 +30,26 @@ neue index.html geplant -> IP(db/server) Abfrage, Weiterleitung etc.
             </div>
             <h1>Login</h1>
             <div class="login-top">
-                <a href="login.html">Zum Login</a>
+                <form>
+                    <div class="login-ic">
+                        <i ></i>
+                        <input type="text" id="username" value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'User name';
+                                }"/>
+                        <div class="clear"> </div>
+                    </div>
+                    <div class="login-ic">
+                        <i class="icon"></i>
+                        <input type="password" id="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'password';
+                                }"/>
+                        <div class="clear"> </div>
+                    </div>
+
+                    <div class="log-bwn">
+                        <input type="button"  value="Login" >
+                    </div>
+                </form>
 
             </div>
         </div>

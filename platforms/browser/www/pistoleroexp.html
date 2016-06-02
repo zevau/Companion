@@ -12,15 +12,17 @@
 <link href="css/stylest.css" type="text/css" rel="stylesheet" media="all">
 <!--//Custom Theme files-->
 <!--js-->
-<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js_server/checklogin.js"></script>
+<script src="js_server/class.js"></script>
 <!-- //js -->
 
 <!--start-smooth-scrolling-->
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>	
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
+			$(".scroll").click(function(event){
 				event.preventDefault();
 				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 			});
@@ -42,7 +44,7 @@
 						<li>
 							<ul class="address-text">
 								<li><b>Pistolero</b></li>
-								<li>Die Pistoleros sind immer in Bewegung und schnell am Abzug. 
+								<li>Die Pistoleros sind immer in Bewegung und schnell am Abzug.
 									Sie verwenden ausschließlich Handwaffen, jedoch hat dies eine erhöhte Mobilität zum Vorteil.</li>
 							</ul>
 						</li>
@@ -51,7 +53,7 @@
 				</div>
 				<div class="container">
 					<div class="col-xs-6">
-						<button type="button" id="bestätigung">Bestätigung</button>
+						<button type="button" class="confirm"  id="pst">Bestätigung</button>
 					</div>
 					<div class="col-xs-6">
 						<a href="classesa.html"><button type="button" id="zurück">Zurück</button></a>
@@ -66,11 +68,11 @@
 			<script type="text/javascript">
 				$(document).ready(function () {
 					$('#horizontalTab').easyResponsiveTabs({
-						type: 'default', //Types: default, vertical, accordion           
+						type: 'default', //Types: default, vertical, accordion
 						width: 'auto', //auto or any width like 600px
 						fit: true   // 100% fit in a container
 					});
-				});		
+				});
 			</script>
 			<!--//ResponsiveTabs-->
 		</div>
