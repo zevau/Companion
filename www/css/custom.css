@@ -1,24 +1,36 @@
 body{
     max-width: 100% !important;
-   
+
 }
 #usernameDiv{
-    padding-left: 27px;
+    padding-left:75px;
     font-size: 20px;
     font-weight: bold;
 }
 #classnameDiv{
-    padding-left: 27px;
+    padding-left: 75px;
     font-size: 14px;
- 
+
+}
+a,a:visited{
+    color:#000;
+}
+#userImage{
+    padding-left: 15px;
+    height:50px;
+    width:auto;
+    float:left;
 }
 #kronkorken{
     text-align: center;
     font-weight: bold;
-    
+
+}
+.navbar {
+    margin-bottom: 10px;
 }
 .lead-custom{
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
 }
 
@@ -27,23 +39,27 @@ body{
     position: fixed;
     bottom:0px;
     margin:0px !important;
-    padding: 0px;
+    padding: 3px;
     width:100%;
-    background-color: #000;
-    color:#fff;
+    background-color: rgba(160,160,160,1);
+    border-top:1px solid rgba(155,155,155,0.8);
+    color:#fff !important;
     font-size: 12px;
     text-align: center;
     line-height: 20px;
 }
+.footer p{
+    margin: 0px;
+}
 
 .inventoryItem{
-    
+
     text-align: center;
-    
-    
+
+
     padding-bottom:5px;
-    
-    
+
+
 }
 .itemImageDiv{
     margin:10px;
@@ -52,6 +68,7 @@ body{
 .itemName{
     position: relative;
     background-color: rgba(0,0,0,0.2);
+    background-color: rgba(125,125,125,0.7);
     color:#fff;
     font-weight: 400;
     padding:5px;
@@ -62,7 +79,7 @@ body{
 
 .itemCount{
     position: absolute;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.9);
     font-size: 10px;
     min-width: 20px;
     min-height: 10px;
@@ -73,3 +90,150 @@ body{
     top:-10px;
     border-radius: 100px;
 }
+.background {
+    background: url("../img/background.png");
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -10000;
+}
+.nopadding {
+    padding: 2px !important;
+    margin: 0 !important;
+}
+
+.topBox{
+    position: fixed;
+    width:100%;
+    top:0px;
+    left:0px;
+    background: url("../img/background.png");
+    /*background-size:auto;*/
+
+    z-index: 1000;
+}
+.bottomBox{
+    margin-top: 190px;
+    padding-bottom: 40px;
+}
+.header{
+    background-color: rgba(255,255,255,0.6);
+    border-bottom:1px solid rgba(176,176,176,0.6);
+}
+.coins img{
+    height:30px;
+    width:auto;
+}
+.statsBox{
+    padding-top: 5px;
+    background-color: rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(176,176,176,0.6);
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.col-img{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.progress{
+    margin-bottom:5px !important;
+}
+
+.tab-container{
+    border-bottom:1px solid rgba(176,176,176,0.6);
+}
+.tab{
+    font-size: 12px;
+    text-align: center;
+    padding-top:8px;
+    padding-bottom:6px;
+    display: inline-block;
+    background-color: rgba(255,255,255,0.6);
+    border-bottom:2px solid transparent;
+    min-width:33.3333%;
+}
+.tab-active{
+    background-color: rgba(230,230,230,0.6);
+    border-bottom:2px solid rgba(150,150,150,0.6);
+}
+
+.wrapQuest{
+    padding-left:15px;
+    padding-right:15px;
+    color:#eee;
+    text-align:center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.questHead{
+    padding:5px;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: rgba(125,125,125,0.7);
+    
+}
+.questDescription{
+    padding:5px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 12px;
+    background-color: rgba(150,150,150,0.8);
+    border-top:1px solid rgba(0,0,0,0.2);
+}
+.progress {
+    position: relative;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }
+ .logout{
+     float:right;
+     margin-right: 15px;
+     background-color: rgba(200,200,200,0.8);
+     padding:5px;
+     padding-left: 10px;
+     padding-right: 10px;
+     font-size: 12px;
+     border-radius: 10px;
+     
+ }
+
+ .faction{
+     margin-top:30px;
+     margin-bottom: 20px;
+ }
+ .faction-select{
+     margin-bottom: 20px;
+ }
+ .faction-team{
+     
+     
+     width:100%;
+     position: absolute;
+     top:-10px;
+     text-align: center;
+     
+ }
+ .faction-team p{
+     display: inline-block;
+     padding:10px;
+     background-color: #000;
+     border-radius:20px;
+     font-weight: bold;
+     font-size: 16px;
+     color:#fff;
+ }

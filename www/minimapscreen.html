@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Minimap</title>
+        <title>Map</title>
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,98 +16,99 @@
 
         <script src="js/jquery-1.12.3.min.js"></script>
         <script type="text/javascript" src="js_server/stats.js"></script>
-
+        <script type="text/javascript" src="js_server/minimap.js"></script>
     </head>
     <body>
-        <!-- header -->
-        <div class="header">
-            <div class="container">
-                <nav class="navbar navbar-default">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="logo">
-                            <div id="usernameDiv"></div>
-                            <div id="classnameDiv"></div>
+        <div class="background"></div>
+        <div class="loading">
+
+        </div>
+        <div class="topBox">
+            
+            
+            <div class="header">
+                <div class="container">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <div class="logout">
+                                Logout
+                            </div>
+                            <div class="logo">
+                                <img id="userImage" alt="user Img" src="item_images/default.png">
+                                <div id="usernameDiv"></div>
+                                <div id="classnameDiv"></div>
+                            </div>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        
+                    </nav>
+                </div>
+            </div>
+
+
+            <div class="container statsBox">
+
+
+                <div class="col-xs-5 nopadding">
+                    <div class="col-xs-12">
+                        
+                        <div class="progress">
+                            <div id="health" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <span></span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-                        <nav class="cl-effect-13" id="cl-effect-13">
-                            <ul class="nav navbar-nav">
-                                <li><strong><a href="inventoryscreen.html" >Inventar</a></strong></li>
-                                <li><strong><a href="questscreen.html" >Questlog</a></strong></li>
-                                <li><strong><a href="minimapscreen.html" class="active" >Minimap</a></strong></li>
-
-
-                            </ul>
-                        </nav>
-
+                    <div class="col-xs-12 ">
+                        
+                        <div class="progress">
+                            <div id="xp" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                               <span></span>
+                            </div>
+                        </div>
                     </div>
-                </nav>
+                </div>
+                <div class="col-xs-2 nopadding">
+                    <div  class="responsive-img coins text-center">
+                        <img alt="Kronkorken" src="item_images/default.png"/>
+                    </div>
+                    <div id="kronkorken">0</div>
+                </div>
+                <div class="col-xs-5 nopadding">
+                    <div class="col-xs-12">
+                        
+                        <div class="progress">
+                            <div id="reaction" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        
+                        <div class="progress">
+                            <div id="stamina" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container tab-container">
+                <div id="#toInv" class="tab ">
+                    <a href="inventoryscreen.html">Inventar</a>
+                </div><div id="#toQue"  class="tab">
+                    <a href="questscreen.html">Quests</a>
+                </div><div id="#toMap" class="tab tab-active">
+                    <a href="minimapscreen.html">Minimap</a>
+                </div>
             </div>
         </div>
 
+        <div class="container bottomBox">
+            <div id="inventoryBox">
 
-        <div class="container">
-
-
-            <div class="col-xs-4">
-                <div class="col-xs-12">
-                    <p class="lead-custom">Health</p>
-                    <div class="progress">
-                        <div id="health" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                            60%
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12">
-                    <p class="lead-custom">XP</p>
-                    <div class="progress">
-                        <div id="xp" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                            60%
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div  class="responsive-img ">
-                    <img alt="Kronkorken" src="img/KRONKORKEN-STERNschwarz.png"/>
-                </div>
-                <div id="kronkorken">200</div>
-            </div>
-            <div class="col-xs-4">
-                <div class="col-xs-12">
-                    <p class="lead-custom">Reaction</p>
-                    <div class="progress">
-                        <div id="reaction" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                            60%
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <p class="lead-custom">Stamina</p>
-                    <div class="progress">
-                        <div id="stamina" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                            60%
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
-
-
-        <div class="container">
-           <div class="col-md-12">
-                <h3>Minimap</h3>
-                <div class="heading-underline"></div>
             </div>
         </div>
 

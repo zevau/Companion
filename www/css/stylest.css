@@ -1,7 +1,7 @@
 body{
 	margin:0;
 	font-family: 'Roboto Condensed', sans-serif;
-	background: #fff;
+	
 }
 body a{
 	transition: 0.5s all;
@@ -27,7 +27,7 @@ body a:hover{
 }
 /*--baner--*/
 .banner {
-	background:url(../img/background.png)no-repeat center 0px;
+	
 	-webkit-background-size:cover;
 	background-size:cover;
 	-moz-background-size:cover;

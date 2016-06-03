@@ -19,6 +19,8 @@ $("document").ready(function () {
                 loadInventory(userInventar);
 
                 $(".loading").fadeOut();
+            }else{
+                 document.getElementById("inventoryBox").innerHTML = "<div class='text-center'>"+returnData.status.message+"</div>"
             }
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -90,10 +92,7 @@ function loadInventory(userInventar) {
             wrapDiv.appendChild(itemDiv);
             document.getElementById("inventoryBox").appendChild(wrapDiv);
 
-            /*Coins*/
-            if (cItem.item_class === "money") {
-                $("#kronkorken").html(cItem.item_amount);
-            }
+           
 
         }
 
