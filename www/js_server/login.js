@@ -4,7 +4,11 @@ $("document").ready(function(){
     
     var userID = localStorage.getItem("USERID");
     var loginMode = true;
-    var postUrl = "http://pb.ingamelandscapes.de/query.php";
+    if(localStorage.getItem("SERVERIP") !== null){
+        var postUrl = localStorage.getItem("SERVERIP")+"/query.php";
+    }else{
+        window.location("index.html");
+    }
     
     $("#reg-pw").hide();
     $("#login-btn").on("click", function () {
@@ -202,5 +206,7 @@ $("document").ready(function(){
                     alert(msg);
                 }
             });
+        }else{
+            $(".loading").fadeOut();
         }
     }
