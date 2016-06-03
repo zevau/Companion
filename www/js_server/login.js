@@ -170,19 +170,32 @@ function checkLogin() {
                 console.log(returnData);
                 if (returnData.status.status === "ok") {
                     if (returnData.userDetails !== null) {
-                        if (returnData.userDetails.team === "0") {
-                            window.location = "faction.html";
-                        } else if (returnData.userDetails.class === "0") {
-                            if (returnData.userInfo.team === "1") {
-                                window.location = "classest.html";
-                            } else if (returnData.userInfo.team === "2") {
-                                window.location = "classesa.html";
+                        
+                         if (returnData.userDetails.team === "0") {
+                            //user hat noch kein team gew�hlt, weiterleitung zur team seite
+                            if (returnData.userDetails.class_id === "0") {
+                                window.location = "faction.html";
                             } else {
-                                alert("What");
+                                alert("What: Kein Team aber ne Klasse? No way!");
                             }
-                        } else if (returnData.userDetails.class !== "0" || returnData.userDetails.team !== "0") {
+
+                        } else if (returnData.userDetails.class_id === "0") {
+                            localStorage.setItem("TEAMID", returnData.userInfo.team);
+                            //user hat noch keine klasse gew�hlt, weiterleitung zur klassen seite
+                            if (returnData.userDetails.team === "1") {
+                                window.location = "classest.html";
+                            } else if (returnData.userDetails.team === "2") {
+                                window.location = "classesa.html";
+                            }
+
+                        } else {
+                            localStorage.setItem("TEAMID", returnData.userDetails.team);
+                            localStorage.setItem("CLASSID", returnData.userDetails.class_id);
+                            //user hat bereits alles gew�hlt weiterleitung zum profil
                             window.location = "inventoryscreen.html";
                         }
+                        
+                        
 
                     } else {
                         $(".loading").fadeOut();
