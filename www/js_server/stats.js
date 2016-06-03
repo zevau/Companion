@@ -24,8 +24,8 @@ $("document").ready(function () {
                                    
                     
                     
-                    $("#username").html(returnData.userDetails.name);
-                    $("#classname").html(returnData.userDetails.class_name);
+                    $("#usernameDiv").html(returnData.userDetails.name);
+                    $("#classnameDiv").html(returnData.userDetails.class_name);
                     
                     $("#health").attr("aria-valuenow",returnData.userDetails.hp);
                     $("#health").html(returnData.userDetails.hp);
