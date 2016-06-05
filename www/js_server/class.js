@@ -1,5 +1,16 @@
 $("document").ready(function () {
+    $(".loading").fadeOut();
     var postUrl = "http://pb.ingamelandscapes.de/query.php";
+
+
+    $("#select-class").find("input").click(function () {
+        $(".loading").fadeIn();
+        var id = $(this).attr("id");
+        console.log(id);
+        selectClass(id);
+    });
+
+
     $("#inf").click(function () {
         selectClass(1);
     }); //infanterist
@@ -51,13 +62,15 @@ $("document").ready(function () {
                     localStorage.setItem("CLASSID", returnData.userInfo.class);
 
                     window.location = "inventoryscreen.html";
-                }else{
+                } else {
                     alert(returnData.status.message);
+                    $(".loading").fadeOut();
                 }
-
+                
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
+                $(".loading").fadeOut();
                 var msg = '';
                 if (jqXHR.status === 0) {
                     msg = 'Not connect.\n Verify Network.';

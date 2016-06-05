@@ -56,7 +56,10 @@ $("document").ready(function () {
             var wrapDiv = document.createElement("div");
             wrapDiv.className="wrapQuest";
             var headDiv = document.createElement("div");
-            headDiv.className = "questHead";
+            var done = "";
+            
+            if (qItem.quest_done === "1"){done = " done"}else{done =" undone";}
+            headDiv.className = "questHead" + done;
             headDiv.innerHTML = qItem.quest_name;
             
             var descriptionDiv = document.createElement("div");

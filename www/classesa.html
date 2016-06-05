@@ -1,96 +1,176 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Classes Avantgardisten</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet">
-<script src="js_server/checklogin.js"></script>
-<script src="js/wow.min.js"></script>
-<script>
- new WOW().init();
-</script>
-<!-- //animation-effect -->
+    <head>
+        <title>Klassen: Avangardisten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-</head>
+        <!-- Custom Theme files -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />-->
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- js -->
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/selectclass.js"></script>
+        <script src="js_server/class.js"></script>
+        <!-- //js -->
+        <!-- animation-effect -->
+        <link href="css/animate.min.css" rel="stylesheet">
 
-<body>
-<!-- header -->
-	<div class="header">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-				 	<div class="logo">
-						<a class="navbar-brand" href="index.html">Charakter:</a>
-					</div>
-				</div>
-				<!-- /.navbar-collapse -->
-			</nav>
-		</div>
-	</div>
-<!-- services -->
-	<div class="services">
-		<div class="container">
-			<div class="service-grids">
-				<div class="col-md-4 service-grid">
-						<a href="averagejoeexp.html"><img src="img/1.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Average Joe</p>
-						</div>
-				</div>
-				<div class="col-md-4 service-grid">
-						<a href="pistoleroexp.html"><img src="img/2.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Pistolero</p>
-						</div>
-				</div>
-				<div class="col-md-4 service-grid">
-						<a href="specialistexp.html"><img src="img/3.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Specialist</p>
-						</div>
-				</div>
-			</div>
-			<div class="service-grids">
-				<div class="col-md-4 service-grid">
-						<a href="brawlerexp.html"><img src="img/4.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Brawler</p>
-						</div>
-				</div>
-				<div class="col-md-4 service-grid">
-						<a href="limitbreakerexp.html""><img src="img/2.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Limit Breaker</p>
-						</div>
-				</div>
-					<div class="col-md-4 service-grid">
-						<a href="hackeravantexp.html"><img src="img/3.png" alt=" " class="img-responsive" /></a>
-						<div class="service-grd-pos2">
-							<p>Hacker</p>
-						</div>
-					</div>
-				<div class="clearfix"> </div>
-			</div>
-<!-- //services -->
-<!-- footer -->
-		<div class="footer">
-		<div class="container">
-			<p>&copy 2016 HAW Industries. All rights reserved | Design by HAW</a></p>
-		</div>
-		</div>
-<!-- //footer -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-</body>
+
+
+        <!-- //animation-effect -->
+
+    </head>
+
+    <body>
+        <!-- header -->
+        <div class="background"></div>
+        <div class="loading"></div>
+        <div class="class-overlay">
+            <div class="class-close">X</div>
+            <div class="class-title">
+                <h1>Test</h1>
+            </div>
+            <div class="class-description">
+                Wenn die Situation schlecht aussieht, sind die Enforcer die ersten, die zur Stelle gerufen werden. Ausgestattet mit dem höchsten, was der technische Fortschritt der Waffentechnologie zu bieten hat, sorgen die Enforcer für Straßen, welche mit den Leichen ihrer Feinde gepflastert sind.
+            </div>
+            <div id="select-class" class="text-right">
+                <input type="button" id="0" value="Auswählen">
+            </div>
+        </div>
+
+        <div class="container text-center">
+
+            <div class="faction">
+                <h1>Klasse:</h1>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="container">
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select ">
+
+                <img src="img_classes/aj.png"  class="img-block class-margin-img" />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Average Joe</p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Average Joe
+                </div>
+                <div class="class-description-info hidden">
+                    Der Average Joe ist die Einordnung aller, die sich ohne Vorwissen im Krieg beteiligen wollen.
+                    Mit einem Sturmgewehr ausgerüstet dient der Average Joe als Rückgrat der avantgardistischen Streitmächte.
+                </div>
+                <div class="class-id hidden">7</div>
+            </div>
+
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                <img src="img_classes/br.png"  class="img-block class-margin-img"  />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Brawler</p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Brawler
+                </div>
+                <div class="class-description-info hidden">
+                    Für Brawler ist nur der Nahkampf das einzig Wahre. Immer im Adrenalinrausch und höchstgefährlich; nur der Abstand zwischen dem Ziel und dem Brawler steht dem letzteren im Weg.
+                </div>
+                <div class="class-id hidden">8</div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                <img src="img_classes/lb.png"  class="img-block class-margin-img" />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Limit Breaker</p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Limit Breaker
+                </div>
+                <div class="class-description-info hidden">
+                    Ausgestattet mit übernatürlichen Kräften, welche die menschlichen Limits weit übertreffen, sind die Limit Breaker oft diejenigen, die eine Schlacht auf den Kopf stellen können. Aufgrund der geistlichen Instabilität eines Limit Breakers ist es ihnen jedoch verboten, Waffen bei sich zu tragen.
+                </div>
+                <div class="class-id hidden">9</div>
+            </div>
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                <img src="img_classes/pi.png"  class="img-block class-margin-img"  />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Pistoleros </p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Pistoleros
+                </div>
+                <div class="class-description-info hidden">
+                    Die Pistoleros sind immer in Bewegung und schnell am Abzug. Sie verwenden ausschließlich Handwaffen, jedoch hat dies eine erhöhte Mobilität zum Vorteil.
+                </div>
+                <div class="class-id hidden">10</div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                <img src="img_classes/sp.png"  class="img-block class-margin-img" />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Specialist </p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Specialist
+                </div>
+                <div class="class-description-info hidden">
+                    Schwer und außergewöhnlich bewaffnet: das ist der Specialist. Was er an Mobilität verliert, macht er an Feuerkraft wieder wett.
+                </div>
+                <div class="class-id hidden">11</div>
+            </div>
+            <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                <img src="img_classes/hacka.png"  class="img-block class-margin-img" />
+                <div style="">
+                    <div class="faction-team">
+                        <p>Hacker </p>
+                    </div>
+                </div>
+
+                <div class="class-title-info hidden">
+                    Hacker
+                </div>
+                <div class="class-description-info hidden">
+                    In dem post-Technolapse Zeitalter erweist sich ein Hacker als unglaublich nützlich. Ausgestattet mit bewaffneten Drohnen und ausgeklügelten Protokollen sind die Hacker ein wichtiger Baustein in jedem Einsatz der Avantgardisten.
+                </div>
+                <div class="class-id hidden">12</div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="footer">
+
+            &copy; 2016 HAW Industries. All rights reserved 
+
+        </div>
+
+    </body>
 </html>

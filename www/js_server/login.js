@@ -180,7 +180,7 @@ function checkLogin() {
                             }
 
                         } else if (returnData.userDetails.class_id === "0") {
-                            localStorage.setItem("TEAMID", returnData.userInfo.team);
+                            localStorage.setItem("TEAMID", returnData.userDetails.team);
                             //user hat noch keine klasse gew�hlt, weiterleitung zur klassen seite
                             if (returnData.userDetails.team === "1") {
                                 window.location = "classest.html";

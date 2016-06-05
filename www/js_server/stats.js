@@ -33,7 +33,7 @@ $("document").ready(function () {
 
                 $("#usernameDiv").html(returnData.userDetails.name);
                 $("#classnameDiv").html(returnData.userDetails.class_name);
-
+                $("#userImage").attr("src", returnData.userDetails.class_img);
                 $("#health").attr("aria-valuenow", returnData.userDetails.hp);
                 $("#health").find("span").html("HP: "+returnData.userDetails.hp);
                 $("#health").css("width", returnData.userDetails.hp + "%");
@@ -49,7 +49,7 @@ $("document").ready(function () {
                 $("#stamina").attr("aria-valuenow", returnData.userDetails.stamina);
                 $("#stamina").find("span").html("Stamina: " + returnData.userDetails.stamina.toString());
                 $("#stamina").css("width", returnData.userDetails.stamina + "%");
-
+                
                 $(".loading").fadeOut();
             }
         },
