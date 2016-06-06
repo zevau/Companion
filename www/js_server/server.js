@@ -2,16 +2,17 @@ $("document").ready(function () {
     
     if (localStorage.getItem("SERVERIP") !== null) {
         $("#serverIp").val(localStorage.getItem("SERVERIP"));
+        checkServer(localStorage.getItem("SERVERIP"));
     }
     $(".loading").fadeOut();
     
     $(".log-bwn").on("click", function () {
-        $(".loading").fadeIn();
-        
-        
-        var url = $("#serverIp").val();
-        var sendData = {action: "checkserver"}; //Array
+        checkServer($("#serverIp").val());
+    });
 
+    function checkServer(url){
+        $(".loading").fadeIn();   
+        var sendData = {action: "checkserver"}; //Array
         $.ajax({
             url: url + "/query.php",
             type: "POST",
@@ -55,10 +56,10 @@ $("document").ready(function () {
                 } else {
                     msg = 'Uncaught Error.\n' + jqXHR.responseText;
                 }
-                alert(msg);
+                alert("Serverfehler: " + msg);
                 $(".loading").fadeOut();
             }
         });
-    });
+    }
 
 });

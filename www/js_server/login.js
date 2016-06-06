@@ -9,7 +9,8 @@ $("document").ready(function () {
     } else {
         window.location("index.html");
     }
-
+    $("#login-btn").on('touchstart', this, loginEvent);
+    
     $("#reg-pw").hide();
     $("#login-btn").on("click", function () {
         if (loginMode) {
@@ -231,3 +232,16 @@ function checkLogin() {
         $(".loading").fadeOut();
     }
 }
+
+function loginEvent() {
+    //behaviour for end
+    $(this).on('touchend', function(e){
+        alert("touched");
+        $(this).off('touchend');
+        });
+    //behaviour for move
+    $(this).on('touchmove', function(e){
+        $(this).off('touchend');
+        });     
+    }
+
