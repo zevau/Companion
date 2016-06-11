@@ -29,7 +29,76 @@
 
         <div data-role="page" id="quests">
             <div class="topBox" >
+                <div id="codeOverlay" class="class-overlay">
+                    <div onclick="codeClose();" class="class-close">X</div>
+                    <div class="class-title">
+                        <h2>Code eingeben</h2>
+                        <div class="row">
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
 
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                        </div><h2></h2>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="1" onclick="addNumber(1);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="2" onclick="addNumber(2);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="3" onclick="addNumber(3);"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="4" onclick="addNumber(4);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="5" onclick="addNumber(5);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="6" onclick="addNumber(6);"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="7" onclick="addNumber(7);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="8" onclick="addNumber(8);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="9" onclick="addNumber(9);"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <input type="button" onclick="loadCode();" value="Absenden">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
 
                 <div class="header">
                     <div class="container">
@@ -103,7 +172,7 @@
                 <div class="container tab-container">
                     <div onclick="loadPage('inventory');" id="toInv" class="tab ">
                         Inventar
-                    </div><div  id="toQue"  class="tab tab-active">
+                    </div><div  onclick="loadPage('quest');" id="toQue"  class="tab tab-active">
                         Quests
                     </div><div onclick="loadPage('minimap');" id="toMap" class="tab ">
                         Minimap
@@ -112,6 +181,11 @@
             </div>
 
             <div class="container bottomBox">
+                <div style="text-align: center">
+                    <div id="codeButton" onclick="showCode();">
+                        Code eingeben
+                    </div>
+                </div>
                 <div id="questBox">
 
                 </div>

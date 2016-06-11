@@ -215,6 +215,53 @@ function forwardUser(url, uID) {
         }
     });
 }
+function loadCode() {
+    $.mobile.loading("show");
+    var code = outPut[0].toString() + outPut[1].toString() + outPut[2].toString() + outPut[3].toString();
+    console.log("Load: " + code);
+    var sendData = {action: "loadcode", code: code, userid: localStorage.getItem("USERID")};
+    $.ajax({
+        url: localStorage.getItem("SERVERIP") + "/query.php",
+        type: "POST",
+        data: sendData,
+        success: function (data, textStatus, jqXHR)
+        {
+            var returnData = JSON.parse(data);
+            $.mobile.loading("hide");
+            console.log(returnData);
+            if (returnData.status.status === "ok") {
+                alert(returnData.status.message);
+
+            } else {
+                alert(returnData.status.message);
+
+            }
+            getUserStats(localStorage.getItem("SERVERIP"),localStorage.getItem("USERID"),currentPage);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status === 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status === 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert("Serverfehler(login: " + sendData + "): " + url + "-" + localStorage.getItem("SERVERIP") + "-" + msg);
+            alert(jqXHR.responseText);
+            $.mobile.loading("hide");
+        }
+    });
+}
 function loginUser(url, uName, uPass) {
     $.mobile.loading("show");
 
@@ -495,7 +542,7 @@ function loadQuests(url, uID, page) {
                 userQuests = returnData.quests;
 
                 if (userQuests !== null) {
-
+                    $("#" + page).find("#questBox").html("");
                     for (var quest in userQuests) {
                         var qItem = userQuests[quest];
 
@@ -577,7 +624,7 @@ function loadInventar(url, uID, page) {
                 userInventar = returnData.userInventar;
 
                 if (userInventar !== null) {
-
+                    $("#" + page).find("#inventoryBox").html("");
                     for (var item in userInventar) {
 
                         var cItem = userInventar[item];
@@ -864,7 +911,7 @@ $(document).on('pageinit', '#minimap', function () {
 /*TABS*/
 
 function loadPage(page) {
-    $.mobile.loading("show");
+   
     $.mobile.changePage(page + "screen.html", {
         reloadPage: false,
         transition: "false",
@@ -880,9 +927,48 @@ function showItem(item) {
     for (var i in userInventar) {
         var cItem = userInventar[i];
         if (cItem.item_id === item) {
-            $(".class-overlay").find(".class-title").find("h2").html(cItem.item_name);
-            $(".class-overlay").fadeIn();
+            $("#itemOverlay").find(".class-title").find("h2").html(cItem.item_name);
+            $("#itemOverlay").fadeIn();
         }
     }
     $.mobile.loading("hide");
 }
+
+/* CODE */
+
+
+
+function showCode() {
+    $("#codeOverlay").fadeIn();
+}
+function codeClose() {
+    $("#codeOverlay").fadeOut();
+}
+
+var number = [0, 0, 0, 0];
+var outPut = [0, 0, 0, 0];
+function addNumber(n) {
+
+    if (number.length < 4) {
+        number.push(n);
+    } else {
+        number = new Array();
+        number.push(n);
+    }
+
+    for (i = 0; i < number.length; i++) {
+        outPut[i] = number[i];
+    }
+    for (i = number.length; i < 4; i++) {
+        outPut[i] = 0;
+    }
+    console.log(outPut);
+    var $j_object = $(".codeBox", "#" + currentPage);
+    $j_object.each(function (i) {
+
+        $(this).html(outPut[i]);
+
+
+    });
+}
+
