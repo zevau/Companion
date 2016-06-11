@@ -7,16 +7,84 @@ var userID = null;
 var teamID = null;
 var classID = null;
 
+var reloadInterval;
+var reloadIntervalRunning = false;
+var currentPage = "inventory";
+
 function getLocalStorage() {
-    
+
     serverIP = localStorage.getItem("SERVERIP");
-   
+
     userID = localStorage.getItem("USERID");
-    
+
     teamID = localStorage.getItem("TEAMID");
     classID = localStorage.getItem("CLASSID");
 }
+function liveStats() {
+    if (!reloadIntervalRunning) {
+        reloadIntervalRunning = true;
+        reloadInterval = setInterval(function () {
+            reloadStats(userID);
+        }, 5000);
+    }
+}
 
+function reloadStats(uID) {
+    var sendData = {action: "getuserdetails", userid: uID}; //Array
+    $.ajax({
+        url: localStorage.getItem("SERVERIP") + "/query.php",
+        type: "POST",
+        data: sendData,
+        success: function (data, textStatus, jqXHR)
+        {
+            var returnData = JSON.parse(data);
+            if (returnData.status.status === "ok") {
+                console.log("Page: " + currentPage + " HP: " + returnData.userDetails.hp);
+                loadCoins(returnData.userInventar, currentPage);
+
+
+                $("#" + currentPage).find("#health").attr("aria-valuenow", returnData.userDetails.hp);
+                $("#" + currentPage).find("#health").find("span").html("HP: " + returnData.userDetails.hp);
+                $("#" + currentPage).find("#health").css("width", returnData.userDetails.hp + "%");
+
+                $("#" + currentPage).find("#xp").attr("aria-valuenow", returnData.userDetails.xp);
+                $("#" + currentPage).find("#xp").find("span").html("XP: " + returnData.userDetails.xp);
+                $("#" + currentPage).find("#xp").css("width", returnData.userDetails.xp + "%");
+
+                $("#" + currentPage).find("#reaction").attr("aria-valuenow", returnData.userDetails.reaction);
+                $("#" + currentPage).find("#reaction").find("span").html("Reaction: " + returnData.userDetails.reaction);
+                $("#" + currentPage).find("#reaction").css("width", returnData.userDetails.reaction + "%");
+
+                $("#" + currentPage).find("#stamina").attr("aria-valuenow", returnData.userDetails.stamina);
+                $("#" + currentPage).find("#stamina").find("span").html("Stamina: " + returnData.userDetails.stamina.toString());
+                $("#" + currentPage).find("#stamina").css("width", returnData.userDetails.stamina + "%");
+
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert("Serverfehler: " + msg);
+
+        }
+    });
+}
 /* POST TO SERVER */
 function connectToServer(url, sendData) {
     $.mobile.loading("show");
@@ -86,51 +154,23 @@ function forwardUser(url, uID) {
             if (returnData.status.status === "ok") {
                 if (returnData.userDetails !== null) {
 
-                    if (returnData.userDetails.team === "0") {
-                        //user hat noch kein team gewï¿½hlt, weiterleitung zur team seite
-                        if (returnData.userDetails.class_id === "0") {
-                            $.mobile.changePage("faction.html", {
-                                reloadPage: false,
-                                transition: "fade",
-                                reverse: false,
-                                changeHash: false
-                            });
-                        } else {
-                            alert("Wennde dich an deinen Parteiführer.");
-                            $.mobile.loading("hide");
-                        }
 
-                    } else if (returnData.userDetails.class_id === "0") {
-                        localStorage.setItem("TEAMID", returnData.userDetails.team);
 
-                        if (returnData.userDetails.team === "1") {
-                            $.mobile.changePage("classest.html", {
-                                reloadPage: false,
-                                transition: "fade",
-                                reverse: false,
-                                changeHash: false
-                            });
-                        } else if (returnData.userDetails.team === "2") {
-                            $.mobile.changePage("classesa.html", {
-                                reloadPage: false,
-                                transition: "fade",
-                                reverse: false,
-                                changeHash: false
-                            });
-                        }
-
-                    } else {
-                        localStorage.setItem("TEAMID", returnData.userDetails.team);
-                        localStorage.setItem("CLASSID", returnData.userDetails.class_id);
-                        $.mobile.changePage("inventoryscreen.html", {
+                    if (returnData.userDetails.class_id === "0") {
+                        $.mobile.changePage("classes.html", {
                             reloadPage: false,
                             transition: "fade",
                             reverse: false,
                             changeHash: false
                         });
+                    } else {
+
+                        localStorage.setItem("TEAMID", returnData.userDetails.team);
+
+                        localStorage.setItem("CLASSID", returnData.userDetails.class_id);
+                        loadPage("inventory");
+
                     }
-
-
 
                 } else {
                     $.mobile.changePage("login.html", {
@@ -177,7 +217,7 @@ function forwardUser(url, uID) {
 }
 function loginUser(url, uName, uPass) {
     $.mobile.loading("show");
-    
+
     var sendData = {action: "loginuser", username: uName, password: uPass};
     $.ajax({
         url: localStorage.getItem("SERVERIP") + "/query.php",
@@ -266,61 +306,61 @@ function registerUser(url, uName, uPass, uPass2) {
         }
     });
 }
-function selectFaction(url, uID, teamID) {
-    $.mobile.loading("show");
-    var sendData = {action: "selectteam", teamid: teamID, userid: uID};
-    $.ajax({
-        url: url + "/query.php",
-        type: "POST",
-        data: sendData,
-        success: function (data, textStatus, jqXHR)
-        {
-            var returnData = JSON.parse(data);
-
-
-
-            if (returnData.status.status === "ok") {
-
-                if (teamID === "1") {
-                    localStorage.setItem("TEAMID", teamID);
-                    forwardUser(serverIP, uID);
-                } else if (teamID === "2") {
-                    localStorage.setItem("TEAMID", teamID);
-                    forwardUser(serverIP, uID);
-                } else {
-                    alert("Kein Team gewählt");
-                    $.mobile.loading("hide");
-                }
-
-            } else {
-                alert(returnData.status.message);
-                $.mobile.loading("hide");
-            }
-
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = 'Not connect.\n Verify Network.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            alert("Serverfehler: " + msg);
-            $.mobile.loading("hide");
-        }
-    });
-}
+/*function selectFaction(url, uID, teamID) {
+ $.mobile.loading("show");
+ var sendData = {action: "selectteam", teamid: teamID, userid: uID};
+ $.ajax({
+ url: url + "/query.php",
+ type: "POST",
+ data: sendData,
+ success: function (data, textStatus, jqXHR)
+ {
+ var returnData = JSON.parse(data);
+ 
+ 
+ 
+ if (returnData.status.status === "ok") {
+ 
+ if (teamID === "1") {
+ localStorage.setItem("TEAMID", teamID);
+ forwardUser(serverIP, uID);
+ } else if (teamID === "2") {
+ localStorage.setItem("TEAMID", teamID);
+ forwardUser(serverIP, uID);
+ } else {
+ alert("Kein Team gewählt");
+ $.mobile.loading("hide");
+ }
+ 
+ } else {
+ alert(returnData.status.message);
+ $.mobile.loading("hide");
+ }
+ 
+ },
+ error: function (jqXHR, textStatus, errorThrown)
+ {
+ var msg = '';
+ if (jqXHR.status === 0) {
+ msg = 'Not connect.\n Verify Network.';
+ } else if (jqXHR.status == 404) {
+ msg = 'Requested page not found. [404]';
+ } else if (jqXHR.status == 500) {
+ msg = 'Internal Server Error [500].';
+ } else if (exception === 'parsererror') {
+ msg = 'Requested JSON parse failed.';
+ } else if (exception === 'timeout') {
+ msg = 'Time out error.';
+ } else if (exception === 'abort') {
+ msg = 'Ajax request aborted.';
+ } else {
+ msg = 'Uncaught Error.\n' + jqXHR.responseText;
+ }
+ alert("Serverfehler: " + msg);
+ $.mobile.loading("hide");
+ }
+ });
+ }*/
 function selectClass(url, uID, classID) {
     $.mobile.loading("show");
     var sendData = {action: "selectclass", classid: classID, userid: uID};
@@ -641,31 +681,31 @@ function logout() {
     localStorage.removeItem("TEAMID");
     localStorage.removeItem("CLASSID");
     localStorage.removeItem("SERVERIP");
-    
-    window.location ="index.html";
+
+    window.location = "index.html";
     /*
-    $.mobile.changePage("index.html", {
-        reloadPage: true,
-        transition: "fade",
-        reverse: false,
-        changeHash: false
-    });
-    */
+     $.mobile.changePage("index.html", {
+     reloadPage: true,
+     transition: "fade",
+     reverse: false,
+     changeHash: false
+     });
+     */
 }
 /* INDEX */
 
 
 $('#index').on('pageinit', function () {
     $.mobile.loading("show");
-    
+
     getLocalStorage();
-   
+
     if (serverIP !== null) {
-        
+
         $("#serverIp").val(serverIP);
         connectToServer(serverIP, {action: "checkserver"});
     } else {
-        
+
         $("#serverIp").val("http://pb.ingamelandscapes.de");
         $.mobile.loading("hide");
     }
@@ -780,6 +820,7 @@ $(document).on('click', "#select-class", function () {
 $(document).on('pageinit', '#inventory', function () {
 
     console.log("Page: Inventory");
+    currentPage = "inventory";
     getLocalStorage();
     if (userID !== null && classID !== null && teamID !== null && serverIP !== null) {
         getUserStats(serverIP, userID, "inventory");
@@ -797,6 +838,7 @@ $(document).on('pageshow', '#quests', function () {
 $(document).on('pagebeforeshow', '#quests', function () {
     $.mobile.loading("show");
     console.log("Page: Quests");
+    currentPage = "quests";
     getLocalStorage();
     if (userID !== null && classID !== null && teamID !== null && serverIP !== null) {
         getUserStats(serverIP, userID, "quests");
@@ -809,6 +851,7 @@ $(document).on('pagebeforeshow', '#quests', function () {
 $(document).on('pageinit', '#minimap', function () {
 
     console.log("Page: Map");
+    currentPage = "minimap";
     getLocalStorage();
     if (userID !== null && classID !== null && teamID !== null && serverIP !== null) {
         getUserStats(serverIP, userID, "minimap");
@@ -822,13 +865,13 @@ $(document).on('pageinit', '#minimap', function () {
 
 function loadPage(page) {
     $.mobile.loading("show");
-
     $.mobile.changePage(page + "screen.html", {
         reloadPage: false,
         transition: "false",
         reverse: false,
         changeHash: false
     });
+    liveStats();
 }
 
 /* ITEM*/
